@@ -6,6 +6,12 @@ public class Main {
       lst.addToEnd(12);
       lst.addToEnd(11);
       lst.insertAt(1, 100);
-      System.out.println("There are " + lst.getSize() + " items in the list.");
+      lst.insertAt(1, 200);
+      lst.insertAt(1, 300);
+      lst.insertAt(1, 400);
+      lst.insertAt(1, 500);
+      for(int i = 0; i < lst.getSize(); i++) {
+    	  System.out.printf("%4d", lst.getAt(i));
+      }
    }
 }

@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 // Complete the implementation of your MyLinkedList class in this file
 
 
@@ -35,13 +37,9 @@ public class MyLinkedList implements MyList {
 
 	@Override
 	public void insertAt(int index, Object o) {
-		//find the location
-		//Inserts a new Node at the specified index in the list. 
-		//Given the list {1, 2, 3} and an instruction to insertAt(1, 99), 
-		//the result would be this {1, 99, 2, 3}.
-		//Throws a NoSuchElementException if the specified index is less than 0 or greater than size.
-		//this method will construct a new Node object who’s data is the element to be added, 
-		//and place this Node appropriately into the list.
+
+		if(index < 0 || index >= size)
+			throw new NoSuchElementException();
 		
 		Node newNode = new Node();
 		newNode.data = o;
@@ -68,8 +66,17 @@ public class MyLinkedList implements MyList {
 
 	@Override
 	public Object getAt(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if(index < 0 || index >= size)
+			throw new NoSuchElementException();
+		//find it
+		int pos = 0;
+		MyLinkedListIterator itr = new MyLinkedListIterator();
+		itr.currentNode = head;
+		while(pos < index) {
+			itr.currentNode = itr.currentNode.next;
+			pos++;
+		}
+		return itr.currentNode.data;
 	}
 
 	@Override
