@@ -35,7 +35,28 @@ public class MyLinkedList implements MyList {
 
 	@Override
 	public void insertAt(int index, Object o) {
-		// TODO Auto-generated method stub
+		//find the location
+		//Inserts a new Node at the specified index in the list. 
+		//Given the list {1, 2, 3} and an instruction to insertAt(1, 99), 
+		//the result would be this {1, 99, 2, 3}.
+		//Throws a NoSuchElementException if the specified index is less than 0 or greater than size.
+		//this method will construct a new Node object who’s data is the element to be added, 
+		//and place this Node appropriately into the list.
+		
+		Node newNode = new Node();
+		newNode.data = o;
+		MyLinkedListIterator lstItr = new MyLinkedListIterator(), prevlstItr = new MyLinkedListIterator();
+		lstItr.currentNode = head;
+		int pos = 0;
+		while(pos < index) {
+			prevlstItr.currentNode = lstItr.currentNode;
+			lstItr.currentNode = lstItr.currentNode.next;
+			pos++;
+		}
+		//on the node so insert here
+		newNode.next = lstItr.currentNode;
+		prevlstItr.currentNode.next = newNode;
+		size++;
 		
 	}
 

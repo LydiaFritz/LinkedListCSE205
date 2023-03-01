@@ -5,6 +5,7 @@ public class Main {
       MyLinkedList lst = new MyLinkedList();
       lst.addToEnd(12);
       lst.addToEnd(11);
+      lst.insertAt(1, 100);
       System.out.println("There are " + lst.getSize() + " items in the list.");
    }
 }
