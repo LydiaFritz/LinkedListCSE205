@@ -4,12 +4,32 @@
 public class MyLinkedList implements MyList {
     // Implement the required fields and methods here
     private Node head = null;
+    private int size = 0;
 	
 	
 
 	@Override
 	public void addToEnd(Object o) {
-		// TODO Auto-generated method stub
+		//find the end
+		Node curr = head;
+		Node newNode  = new Node();
+		newNode.next = null;
+		newNode.data = o;
+		
+		if(curr == null)
+			//empty list, this is the first node
+			head = newNode;
+		else {
+			//find the end using MyListIterator
+			MyLinkedListIterator itr = new MyLinkedListIterator();
+			itr.currentNode = head;
+			while(itr.hasNext())
+				itr.currentNode = itr.currentNode.next;
+			//no next node, so we are at end of list
+			//add node here
+			itr.currentNode.next = newNode;
+		}
+		size++;
 		
 	}
 
@@ -34,7 +54,7 @@ public class MyLinkedList implements MyList {
 	@Override
 	public int getSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
    
 	// Do not alter the code below 
