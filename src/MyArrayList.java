@@ -1,5 +1,5 @@
 
-public class MyLinkedList implements MyList {
+public class MyArrayList implements MyList {
 
 	@Override
 	public void addToEnd(Object o) {
